@@ -2,10 +2,20 @@
 Input: a List of integers
 Returns: a List of integers
 '''
+import math
 def product_of_all_other_numbers(arr):
-    # Your code here
+    #multiply the whole array toogether and call it product
+    #set up result array
+    #loop through the whole array
+        #divide the product by the current index and push the result onto the result array
+    product = 1
+    for num in arr:
+        product = product * num
+    res = []
+    for num in arr:
+        res.append(product / num)
 
-    pass
+    return res
 
 
 if __name__ == '__main__':
