@@ -3,6 +3,13 @@ Input: an integer
 Returns: an integer
 '''
 import itertools
+cache = {
+        0: 1,
+        1:1,
+        2:2,
+        3:4
+    }
+
 def eating_cookies(n):
     # Your code here
     #create a list containing 1,2,3 the number of times that n is divisible by and also create a counter variable
@@ -17,9 +24,21 @@ def eating_cookies(n):
     #     possible_addends.append(3)
     # result = [seq for i in range(len(possible_addends), 0, -1) for seq in itertools.combinations(possible_addends, i) if sum(seq) == n]
     # return len(result)
+    if n == 0 or n == 1:
+        return 1
+    elif n == 2:
+        return 2
+    elif n == 3:
+        return 4
+    else:
+        if n in cache:
+            return cache[n]
+        cache[n] = eating_cookies(n - 1) + eating_cookies(n - 2) + eating_cookies(n - 3)
+        return cache[n]
+
+
 
 if __name__ == "__main__":
     # Use the main function here to test out your implementation
     num_cookies = 5
-
     print(f"There are {eating_cookies(num_cookies)} ways for Cookie Monster to each {num_cookies} cookies")
